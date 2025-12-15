@@ -97,7 +97,7 @@ class EmployeeDepartmentReportServiceTest {
     }
 
     @Test
-    void testGenerateAndStoreReport_DataProviderFailure() {
+    void testGenerateAndStoreReport_DataProviderFailure() throws Exception {
         // Given
         when(dataProvider.loadReportData()).thenThrow(new RuntimeException("Database error"));
 

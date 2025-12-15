@@ -170,7 +170,7 @@ class CsvFileManagerTest {
     }
 
     @Test
-    void testGetLatestOutputFile() throws IOException {
+    void testGetLatestOutputFile() throws IOException, InterruptedException {
         // Given
         Path outputDir = tempDirectory.resolve("output");
         Files.createDirectories(outputDir);
