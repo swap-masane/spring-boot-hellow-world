@@ -10,20 +10,20 @@ import java.util.List;
 
 /**
  * Spring Data JPA repository for Employee entity.
- * Contains a native query to join EMPLOYEE and DEPARTMENT tables
+ * Contains queries to join EMPLOYEE and DEPARTMENT tables
  * and return report data as EmployeeDepartmentReportRow projections.
  */
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     /**
-     * Native SQL query joining EMPLOYEE and DEPARTMENT tables.
+     * JPQL query joining Employee and Department entities.
      * Returns a projection with employee name, department name, and salary.
      * 
      * This query demonstrates:
-     * - Native SQL with Spring Data JPA
+     * - JPQL (Java Persistence Query Language) with Spring Data JPA
      * - Constructor-based projection for EmployeeDepartmentReportRow
-     * - JOIN operation across multiple tables
+     * - JOIN operation across multiple entities
      */
     @Query(value = "SELECT new com.example.reports.domain.EmployeeDepartmentReportRow(" +
                    "e.name, d.name, e.salary) " +
@@ -35,6 +35,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     /**
      * Alternative native SQL query (for SQL Server).
      * This can be used when pure native SQL is required.
+     * Returns Object[] that needs manual mapping.
      */
     @Query(value = "SELECT e.name AS employeeName, d.name AS departmentName, e.salary " +
                    "FROM EMPLOYEE e " +
